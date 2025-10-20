@@ -1,5 +1,6 @@
 > [上一章：10-PMBOK6与过程组-精解](10-PMBOK6与过程组-精解.md) | [返回目录](../README.md) | [下一章：12-敏捷实践指南-精解](12-敏捷实践指南-精解.md)
 
+
 ---
 # PMBOK®第七版 精解
 
@@ -79,22 +80,117 @@
 
 第七版引入了“价值交付系统”的概念，强调项目是组织创造价值的载体。项目并非孤立存在，而是作为系统的一部分，与项目集、项目组合、运营等协同工作，共同实现组织的战略目标。
 
+**价值交付系统架构图**:
 ```mermaid
-graph TD
-    A[组织战略] --> B(项目组合 Portfolio);
-    B --> C{项目集 Program};
-    B --> D[独立项目 Project];
-    C --> D;
-    D --> E[运营 Operations];
-    E --> F(商业价值 Value);
-    F --反馈--> A;
+graph TB
+    subgraph 组织战略层
+        STRAT[组织战略<br/>Strategic Goals]
+    end
+    
+    subgraph 价值交付系统
+        PORT[项目组合管理<br/>Portfolio Management<br/>选择正确的项目]
+        PROG[项目集管理<br/>Program Management<br/>协调相关项目]
+        PROJ[项目管理<br/>Project Management<br/>交付项目成果]
+        OPS[运营管理<br/>Operations<br/>持续运作]
+    end
+    
+    subgraph 价值实现层
+        VALUE[商业价值<br/>Business Value]
+        BENEFIT[收益实现<br/>Benefits]
+    end
+    
+    STRAT -->|战略对齐| PORT
+    PORT -->|授权| PROG
+    PORT -->|授权| PROJ
+    PROG -->|管理| PROJ
+    PROJ -->|交付成果| OPS
+    OPS -->|持续运营| VALUE
+    PROJ -->|直接创造| BENEFIT
+    VALUE -->|战略反馈| STRAT
+    BENEFIT -->|绩效数据| PORT
+    
+    style STRAT fill:#FFB6C1,stroke:#FF1493,stroke-width:3px
+    style PORT fill:#87CEEB,stroke:#4682B4,stroke-width:2px
+    style PROG fill:#98FB98,stroke:#228B22,stroke-width:2px
+    style PROJ fill:#FFE4B5,stroke:#DAA520,stroke-width:2px
+    style OPS fill:#DDA0DD,stroke:#9370DB,stroke-width:2px
+    style VALUE fill:#F0E68C,stroke:#FFD700,stroke-width:3px
+    style BENEFIT fill:#90EE90,stroke:#32CD32,stroke-width:2px
 ```
+
+**价值交付系统关键要素**:
+
+| 要素 | 定义 | 核心目标 |
+| :--- | :--- | :--- |
+| **项目组合** | 为实现战略目标而组合在一起的项目、项目集、子项目组合和运营 | **选择正确的项目**,确保资源投入到最有价值的工作 |
+| **项目集** | 为获得单独管理无法实现的收益而组合在一起的相关项目 | **协调相关项目**,实现协同效应 |
+| **项目** | 为创造独特产品、服务或成果而进行的临时性工作 | **正确地执行项目**,交付承诺的成果 |
+| **运营** | 持续进行的、重复性的工作，维持组织运转 | **持续运营**,将项目成果转化为持续价值 |
+
+**信息流**: 战略从高层流向项目组合、项目集和项目，而关于绩效和价值实现的信息则从运营和项目反向流回高层，形成一个持续优化的闭环。
+
 
 - **信息流**: 战略从高层流向项目组合、项目集和项目，而关于绩效和价值实现的信息则从运营和项目反向流回高层，形成一个持续优化的闭环。
 
 ---
 
-## 模块二：十二大项目管理原则 (The 12 Project Management Principles)
+**PMBOK7 12大原则关系图**:
+```mermaid
+graph TB
+    subgraph 核心价值导向类[核心价值导向类]
+        P1[1. 管家精神<br/>Stewardship]
+        P2[2. 团队协作<br/>Team]
+        P3[3. 干系人互动<br/>Stakeholders]
+        P4[4. 价值导向<br/>Value]
+    end
+    
+    subgraph 系统思维类[系统思维类]
+        P5[5. 系统思维<br/>Systems Thinking]
+        P6[6. 领导力<br/>Leadership]
+        P7[7. 环境裁剪<br/>Tailoring]
+    end
+    
+    subgraph 执行能力类[执行能力类]
+        P8[8. 质量融入<br/>Quality]
+        P9[9. 驾驭复杂性<br/>Complexity]
+        P10[10. 风险优化<br/>Risk]
+        P11[11. 适应韧性<br/>Adaptability & Resilience]
+        P12[12. 驱动变革<br/>Change]
+    end
+    
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> P5
+    P5 --> P6
+    P6 --> P7
+    P7 --> P8
+    P8 --> P9
+    P9 --> P10
+    P10 --> P11
+    P11 --> P12
+    
+    style P1 fill:#FFB6C1
+    style P2 fill:#FFB6C1
+    style P3 fill:#FFB6C1
+    style P4 fill:#FFB6C1
+    style P5 fill:#87CEEB
+    style P6 fill:#87CEEB
+    style P7 fill:#87CEEB
+    style P8 fill:#98FB98
+    style P9 fill:#98FB98
+    style P10 fill:#98FB98
+    style P11 fill:#98FB98
+    style P12 fill:#98FB98
+```
+
+**12大原则分类解读**:
+
+| 分类 | 原则 | 核心作用 |
+| :--- | :--- | :--- |
+| **核心价值导向类** | 1-4 | 奠定项目管理的价值基础 |
+| **系统思维类** | 5-7 | 提供整体性思考框架 |
+| **执行能力类** | 8-12 | 确保项目成功执行 |## 模块二：十二大项目管理原则 (The 12 Project Management Principles)
 
 这是PMBOK7的灵魂，是项目管理从业者行为和行动的指导方针。它们不是规定性的，而是普适的，需要根据具体情境进行裁剪应用。
 
@@ -531,7 +627,60 @@ graph TD
 **考试应用**: 强调主动风险管理、拥抱变化、应对不确定性的选项通常正确。
 
 ---
+**PMBOK7 8大绩效域关系图**:
+```mermaid
+graph TB
+    subgraph 核心绩效域[核心绩效域]
+        PD1[1. 干系人<br/>Stakeholders]
+        PD2[2. 团队<br/>Team]
+        PD3[3. 开发方法<br/>Development Approach]
+        PD4[4. 规划<br/>Planning]
+    end
+    
+    subgraph 执行绩效域[执行绩效域]
+        PD5[5. 项目工作<br/>Project Work]
+        PD6[6. 交付<br/>Delivery]
+        PD7[7. 测量<br/>Measurement]
+        PD8[8. 不确定性<br/>Uncertainty]
+    end
+    
+    PD1 --> PD2
+    PD2 --> PD3
+    PD3 --> PD4
+    PD4 --> PD5
+    PD5 --> PD6
+    PD6 --> PD7
+    PD7 --> PD8
+    PD8 --> PD1
+    
+    style PD1 fill:#FFB6C1
+    style PD2 fill:#FFB6C1
+    style PD3 fill:#FFB6C1
+    style PD4 fill:#FFB6C1
+    style PD5 fill:#87CEEB
+    style PD6 fill:#87CEEB
+    style PD7 fill:#87CEEB
+    style PD8 fill:#87CEEB
+```
 
+**8大绩效域分类解读**:
+
+| 分类 | 绩效域 | 核心作用 |
+| :--- | :--- | :--- |
+| **核心绩效域** | 1-4 | 奠定项目管理的基础 |
+| **执行绩效域** | 5-8 | 确保项目成功执行 |
+
+**绩效域相互关系**:
+
+1. **干系人绩效域** → 影响所有其他绩效域（干系人需求驱动一切）
+2. **规划绩效域** → 为项目工作和交付提供基础
+3. **测量绩效域** → 为所有绩效域提供反馈循环
+4. **不确定性绩效域** → 贯穿所有绩效域（风险无处不在）
+
+**系统思维视角**:
+- 在一个绩效域的行动会影响其他绩效域
+- 需要平衡各个绩效域的需求
+- 整体优化优于局部优化
 ### 3.9 绩效域的相互作用
 
 **核心思想**: 8个绩效域不是孤立的，而是相互关联的系统。
@@ -539,7 +688,99 @@ graph TD
 **关键关系**:
 - **干系人绩效域** → 影响所有其他绩效域（干系人需求驱动一切）
 - **规划绩效域** → 为项目工作和交付提供基础
-- **测量绩效域** → 为所有绩效域提供反馈循环
+## 原则-绩效域映射矩阵
+
+**PMBOK7 原则与绩效域关系矩阵**:
+```mermaid
+graph LR
+    subgraph 12大原则
+        P1[1. 管家精神]
+        P2[2. 团队协作]
+        P3[3. 干系人互动]
+        P4[4. 价值导向]
+        P5[5. 系统思维]
+        P6[6. 领导力]
+        P7[7. 环境裁剪]
+        P8[8. 质量融入]
+        P9[9. 驾驭复杂性]
+        P10[10. 风险优化]
+        P11[11. 适应韧性]
+        P12[12. 驱动变革]
+    end
+    
+    subgraph 8大绩效域
+        D1[1. 干系人]
+        D2[2. 团队]
+        D3[3. 开发方法]
+        D4[4. 规划]
+        D5[5. 项目工作]
+        D6[6. 交付]
+        D7[7. 测量]
+        D8[8. 不确定性]
+    end
+    
+    P1 --> D1
+    P1 --> D2
+    P2 --> D2
+    P3 --> D1
+    P4 --> D6
+    P5 --> D3
+    P5 --> D4
+    P6 --> D2
+    P7 --> D3
+    P8 --> D5
+    P8 --> D6
+    P9 --> D8
+    P10 --> D8
+    P11 --> D3
+    P11 --> D8
+    P12 --> D1
+    P12 --> D6
+    
+    style P1 fill:#FFE4B5
+    style P2 fill:#FFE4B5
+    style P3 fill:#FFE4B5
+    style P4 fill:#FFE4B5
+    style P5 fill:#87CEEB
+    style P6 fill:#87CEEB
+    style P7 fill:#87CEEB
+    style P8 fill:#98FB98
+    style P9 fill:#98FB98
+    style P10 fill:#98FB98
+    style P11 fill:#98FB98
+    style P12 fill:#98FB98
+    
+    style D1 fill:#FFB6C1
+    style D2 fill:#FFB6C1
+    style D3 fill:#FFB6C1
+    style D4 fill:#FFB6C1
+    style D5 fill:#DDA0DD
+    style D6 fill:#DDA0DD
+    style D7 fill:#DDA0DD
+    style D8 fill:#DDA0DD
+```
+
+**原则与绩效域详细映射关系**:
+
+| 原则 | 主要影响的绩效域 | 说明 |
+| :--- | :--- | :--- |
+| **1. 管家精神** | 干系人、团队 | 对干系人和团队负责，建立信任关系 |
+| **2. 团队协作** | 团队 | 创建协作的团队环境 |
+| **3. 干系人互动** | 干系人 | 有效与干系人沟通和互动 |
+| **4. 价值导向** | 交付 | 所有活动都聚焦于价值实现 |
+| **5. 系统思维** | 开发方法、规划 | 整体性思考项目各部分关系 |
+| **6. 领导力** | 团队 | 通过影响和激励赋能团队 |
+| **7. 环境裁剪** | 开发方法 | 根据项目环境选择合适方法 |
+| **8. 质量融入** | 项目工作、交付 | 将质量要求融入所有工作 |
+| **9. 驾驭复杂性** | 不确定性 | 识别和应对项目复杂性 |
+| **10. 风险优化** | 不确定性 | 主动管理风险和机会 |
+| **11. 适应韧性** | 开发方法、不确定性 | 拥抱变化，快速适应调整 |
+| **12. 驱动变革** | 干系人、交付 | 主动管理变革过程 |
+
+**映射说明**:
+- 每个原则都可能影响多个绩效域
+- 绩效域之间相互关联，原则起到指导作用
+- 这种映射关系帮助理解如何在具体领域应用原则- **测量绩效域** → 为所有绩效域提供反馈循环
 - **不确定性绩效域** → 贯穿所有绩效域（风险无处不在）
 
 **系统思维视角**:
@@ -563,3 +804,4 @@ graph TD
 
 ---
 > [上一章：10-PMBOK6与过程组-精解](10-PMBOK6与过程组-精解.md) | [返回目录](../README.md) | [下一章：12-敏捷实践指南-精解](12-敏捷实践指南-精解.md)
+
