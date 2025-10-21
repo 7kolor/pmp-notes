@@ -2,3 +2,5 @@
 PMP认证考试计算题串讲训练学习.pdf
 .vscode/
 .qoder/
+.env
+feishu_sync.py
